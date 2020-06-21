@@ -1,0 +1,1 @@
+This is a simple rock-paper-scissors game written in a script tag in HTML.
