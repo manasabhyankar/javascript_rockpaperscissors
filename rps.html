@@ -1,0 +1,90 @@
+<script>
+    //this will be the computer selecting a choice
+    let choices = {
+        0:"rock",
+        1:"paper",
+        2:"scissors"
+    };
+    function computerPlay(){
+        return Math.floor(Math.random()*3);
+    }
+    function playRound(player, comp){
+        if(player == comp){
+            alert("It's a tie.")
+            console.log("It's a tie.")
+            return "t"
+        }
+        if(player==0){
+            if(comp==1){
+                alert("You lose this round.");
+                console.log("You lose this round.")
+                return "l";
+            }
+            else if(comp==2){
+                alert("You win this round.");
+                console.log("You win this round.")
+                return "w";
+            }
+        }
+        if(player==1){
+            if(comp==0){
+                alert("You win this round.");
+                console.log("You win this round.")
+                return "w";
+            }
+            else if(comp==2){
+                alert("You lose this round.");
+                console.log("You lose this round.")
+                return "l";
+            }
+        }
+        if(player==2){
+            if(comp==1){
+                alert("You win this round.");
+                console.log("You win this round.")
+                return "w";
+            }
+            else if(comp==0){
+                alert("You lose this round.");
+                console.log("You lose this round.")
+                return "l";
+            }
+        }  
+    }
+    function game(){
+        let x = 0;
+        let comp = 0;
+        let player = 0;
+        let tie = 0;
+        for(x=0; x<5; x++){
+            let user = prompt("Rock(0), paper(1), or scissors(2)?");
+            if(user>2 || user<0){
+                while(user>2 || user<0){
+                    alert("Please enter a number between 0 and 2!");
+                    user = prompt("Rock(0), paper(1), or scissors(2)?");
+                }
+            }
+            let result = playRound(user, computerPlay())
+            if(result=="l"){
+                comp++;
+            }
+            else if(result=="w"){
+                player++;
+            }
+            else{
+                tie++;
+            }
+        }
+        console.log("Final score:\nPlayer:" + player + "\nComputer: " + comp + "\nTies: " + tie);
+        if(player==comp){
+            console.log("The match is a draw.")
+        }
+        else if(player>comp){
+            console.log("The player wins this match.")
+        }
+        else if(player<comp){
+            console.log("The computer wins this match.")
+        }
+    }
+    game()
+</script>
