@@ -1,0 +1,112 @@
+<html>
+    <script>
+        function computerPlay(){
+            return Math.floor(Math.random()*3);
+        }
+        function playRound(player=0, comp=0){
+            if(player == comp){
+                tie++;
+            }
+            if(player==0){
+                if(comp==1){
+                    computer_score++;
+                }
+                else if(comp==2){
+                    player_score++;
+                }
+            }
+            if(player==1){
+                if(comp==0){
+                    player_score++;
+                }
+                else if(comp==2){
+                    computer_score++;
+                }
+            }
+            if(player==2){
+                if(comp==1){
+                    player_score++;
+                }
+                else if(comp==0){
+                    computer_score++;
+                }
+            }
+            getScores()
+        }
+        function getScores(){
+            p_score.textContent = "Player: " + player_score;
+            c_score.textContent = "Computer: " + computer_score;
+            t_score.textContent = "Ties: " + tie;
+            if(player_score>computer_score){
+                winner.textContent = "Player is currently winning."
+            }
+            else if(player_score<computer_score){
+                winner.textContent = "Computer is currently winning."
+            }
+            else{
+                winner.textContent = "Player and Computer are currently tied."
+            }
+        }
+        let player_score = 0;
+        let computer_score = 0;
+        let tie = 0;
+        let div = document.createElement('div');
+        let br1 = document.createElement('br');
+        let br2 = document.createElement('br');
+        let br3 = document.createElement('br');
+        //*************************************************************
+        let p_score = document.createElement('p');
+        p_score.id = "p_score";
+        p_score.textContent = "Player: " + player_score;
+        //*************************************************************
+        let c_score = document.createElement('p');
+        c_score.id = "c_score";
+        c_score.textContent = "Computer: " + computer_score;
+        //*************************************************************
+        let t_score = document.createElement('p');
+        t_score.id = "t_score";
+        t_score.textContent = "Ties: " + tie;
+        //*************************************************************
+        let winner =  document.createElement('p');
+        winner.id = "winner";
+        winner.textContent = "Player and Computer are currently tied."
+        //*************************************************************
+        let btn1 = document.createElement('button');
+        btn1.id = "btn1"
+        btn1.textContent = "Rock";
+        btn1.value = 0;
+        btn1.addEventListener("click", (e) => {
+            playRound(btn1.value, computerPlay());
+        });
+        //*************************************************************
+        let btn2 = document.createElement('button');
+        btn2.id = "btn2"
+        btn2.textContent = "Paper";
+        btn2.value = 1;
+        btn2.addEventListener("click", (e) => {
+            playRound(btn2.value, computerPlay());
+        });
+        //*************************************************************
+        let btn3 = document.createElement('button');
+        btn3.id = "btn3"
+        btn3.textContent = "Scissors";
+        btn3.value = 2;
+        btn3.addEventListener("click", (e) => {
+            playRound(btn3.value, computerPlay());
+        });
+        //*************************************************************
+        let page = document.querySelector('html');
+        page.appendChild(div);
+        div.appendChild(p_score);
+        div.appendChild(br1);
+        div.appendChild(c_score);
+        div.appendChild(br2);
+        div.appendChild(t_score);
+        div.appendChild(br3);
+        div.appendChild(winner)
+        div.appendChild(btn1);
+        div.appendChild(btn2);
+        div.appendChild(btn3);
+        let btn_arr = [btn1, btn2, btn3];
+    </script>
+</html>

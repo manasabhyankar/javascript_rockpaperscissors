@@ -1,10 +1,4 @@
 <script>
-    //this will be the computer selecting a choice
-    let choices = {
-        0:"rock",
-        1:"paper",
-        2:"scissors"
-    };
     function computerPlay(){
         return Math.floor(Math.random()*3);
     }
@@ -75,7 +69,6 @@
                 tie++;
             }
         }
-        console.log("Final score:\nPlayer:" + player + "\nComputer: " + comp + "\nTies: " + tie);
         if(player==comp){
             console.log("The match is a draw.")
         }
@@ -85,6 +78,7 @@
         else if(player<comp){
             console.log("The computer wins this match.")
         }
+        console.log("Final score:\nPlayer:" + player + "\nComputer: " + comp + "\nTies: " + tie);
     }
     game()
 </script>
